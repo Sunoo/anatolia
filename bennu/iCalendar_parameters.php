@@ -1,4 +1,17 @@
-<?php // $Id: iCalendar_parameters.php,v 1.7 2005/07/21 23:17:21 defacer Exp $
+<?php // $Id: iCalendar_parameters.php,v 1.8 2006/01/13 14:10:43 defacer Exp $
+
+/**
+ *  BENNU - PHP iCalendar library
+ *  (c) 2005-2006 Ioannis Papaioannou (pj@moodle.org). All rights reserved.
+ *
+ *  Released under the LGPL.
+ *
+ *  See http://bennu.sourceforge.net/ for more information and downloads.
+ *
+ * @author Ioannis Papaioannou 
+ * @version $Id: iCalendar_parameters.php,v 1.8 2006/01/13 14:10:43 defacer Exp $
+ * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
+ */
 
 class iCalendar_parameter {
     function multiple_values_allowed($parameter) {
@@ -41,9 +54,9 @@ class iCalendar_parameter {
                 return rfc2445_is_valid_value($value, RFC2445_TYPE_CAL_ADDRESS);
             break;
 
-            // These are textual parameters, so the MUST NOT contain double quotes
+            // RFC-2445: CN value may contain quotes.
             case 'CN':
-                return (strpos($value, '"') === false);
+                return rfc2445_is_valid_value($value, RFC2445_TYPE_TEXT);
             break;
 
             // These have enumerated legal values

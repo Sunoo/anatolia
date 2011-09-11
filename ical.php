@@ -1,5 +1,5 @@
 <?php
-include('bennu/lib/bennu.inc.php');
+include('bennu/bennu.inc.php');
 include('config.php');
 
 header('Content-type: text/calendar; charset=utf-8');
@@ -152,7 +152,7 @@ else
 	$cal->add_property('X-WR-CALDESC', $calname);
 	$cal->add_property('X-WR-TIMEZONE', $timezone);
 	$cal->add_property('X-PUBLISHED-TTL', 'PT'.$refreshminutes.'M');
-	$cal->add_property('PRODID', '-//David Maher/NONSGML Anatolia 2.0//EN');
+	$cal->add_property('PRODID', '-//David Maher/NONSGML Anatolia 3.0//EN');
 
 	$bennu = $cal->serialize();
 	$handle = @fopen('cache/output.ics', 'w');
